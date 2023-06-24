@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+  console.log('!');
+
   // Use buttons to toggle between views
   document.querySelector('#inbox').addEventListener('click', () => load_mailbox('inbox'));
   document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
@@ -27,13 +29,6 @@ function compose_email() {
   document.querySelector('#compose-body').value = '';
   const submit = document.querySelector('.subm-disable');
 
-  submit.disabled = true;
-  recipients.onkeyup = () => {
-    if (recipients.value.length > 3) 
-      submit.disabled = false;
-    else 
-      submit.disabled = true;
-  }
 
   document.querySelector('#compose-form').onsubmit = () => sendmail();
 
@@ -124,7 +119,7 @@ function load_mailbox(mailbox) {
 
 function sendmail() {
   
-  fetch('/emails', {
+  fetch('/emails/', {
     method: 'POST',
     body: JSON.stringify({
       recipients: document.getElementById("compose-recipients").value,
@@ -165,7 +160,7 @@ function readmail(id) {
     
     const sender_field = document.createElement('div');
     sender_field.setAttribute("style","text-align: left;");
-    sender_field.innerHTML = `<strong>Від:</strong> ${email.sender}`;
+    sender_field.innerHTML = `<strong>From:</strong> ${email.sender}`;
 
     const datatime_field = document.createElement('div');
     datatime_field.setAttribute("style", "text-align: right;");
@@ -175,7 +170,7 @@ function readmail(id) {
 
 
     const recipients_field = document.createElement('p');
-    recipients_field.innerHTML = `<strong>Кому:</strong> ${email.recipients}`;
+    recipients_field.innerHTML = `<strong>To:</strong> ${email.recipients}`;
 
     const body_field = document.createElement('p');
     const text = email.body.split("\n");
@@ -187,7 +182,7 @@ function readmail(id) {
     body_field.innerHTML = body;
 
     const reply_btn = document.createElement('button');
-    reply_btn.innerText = 'Відповісти';
+    reply_btn.innerText = 'Answer';
     reply_btn.className = 'btn btn-outline-primary';
 
     divLetter.append(grid_div, recipients_field, body_field, reply_btn);
