@@ -74,7 +74,7 @@ span {
 }
 
 .archButton {
-    background-image: url('arch.png');
+    background-image: url('static/mail/archive.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover; 
@@ -89,7 +89,7 @@ span {
 }
 
 .archButton::after {
-    content: "Архівувати";
+    content: "Archive";
     position: absolute;
     top: 0%;
     right: 50%;
@@ -114,7 +114,7 @@ span {
 
 
 .unarchButton {
-    background-image: url('unarch.png');
+    background-image: url('static/mail/unarchive.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover; 
@@ -129,7 +129,7 @@ span {
 }
 
 .unarchButton::after {
-    content: "Розархівувати";
+    content: "Unarchive";
     position: absolute;
     top: 0%;
     right: 50%;
@@ -168,4 +168,4 @@ span {
 
 #space {
     margin-right: 20px;
-} */
+}   */
